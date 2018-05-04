@@ -3,9 +3,8 @@ package com.littleboy.lbmalldao.dao.core;
 
 import com.littleboy.lbmalldao.dao.core.plugins.page.Page;
 import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
-import java.util.Map;
+
 
 /**
  * 
@@ -24,12 +23,13 @@ public interface BaseMapper<Entity,PK, Example> {
 	long countByExample(Example example);
 	
 	/**
-	 * 插入对象
+	 * 插入对象  对象可以有空值
 	 * 
 	 * @param model
 	 *            对象
 	 */
 	int insertSelective(Entity entity);
+
 
 	/**
 	 * 更新对象

@@ -4,7 +4,9 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
-
+    <properties >
+        <property name="dialectClass" value="com.littleboy.lbmalldao.dao.core.plugins.dialect.MySql5Dialect"></property>
+    </properties>
     <!-- 配置mybatis的缓存，延迟加载等等一系列属性 -->
     <settings>
 
@@ -53,7 +55,7 @@
     </settings>
 
     <typeAliases>
-        <package name="com.jd.ecc.tianfu.dao.model"/>
+        <package name="com.littleboy.lbmalldao.dao.model"/>
     </typeAliases>
     <plugins>
         <plugin

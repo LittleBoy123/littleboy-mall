@@ -16,6 +16,7 @@ public class DialectFactory {
 			synchronized (DialectFactory.class) {
 				if (dialectClass == null) {
 					dialectClass = configuration.getVariables().getProperty("dialectClass");
+
 				}
 			}
 		}

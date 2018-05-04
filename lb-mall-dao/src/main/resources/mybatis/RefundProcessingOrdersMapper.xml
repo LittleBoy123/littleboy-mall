@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.littleboy.lbmalldao.dao.mapper.RefundProcessingOrdersMapper">
+  <resultMap id="BaseResultMap" type="com.littleboy.lbmalldao.dao.model.RefundProcessingOrders">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="platformId" jdbcType="VARCHAR" property="platformid" />
+    <result column="outPaymentId" jdbcType="VARCHAR" property="outpaymentid" />
+    <result column="refundFee" jdbcType="VARCHAR" property="refundfee" />
+    <result column="subpartner" jdbcType="VARCHAR" property="subpartner" />
+    <result column="out_trade_no" jdbcType="VARCHAR" property="outTradeNo" />
+    <result column="transaction_id" jdbcType="VARCHAR" property="transactionId" />
+    <result column="query_count" jdbcType="INTEGER" property="queryCount" />
+    <result column="refund_state" jdbcType="VARCHAR" property="refundState" />
+    <result column="out_refund_no" jdbcType="VARCHAR" property="outRefundNo" />
+    <result column="notifyUrl" jdbcType="VARCHAR" property="notifyurl" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, platformId, outPaymentId, refundFee, subpartner, out_trade_no, transaction_id, 
+    query_count, refund_state, out_refund_no, notifyUrl
+  </sql>
+  <select id="selectByExample" parameterType="com.littleboy.lbmalldao.dao.model.RefundProcessingOrdersExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from refund_processing_orders
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from refund_processing_orders
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from refund_processing_orders
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insertSelective" parameterType="com.littleboy.lbmalldao.dao.model.RefundProcessingOrders">
+    insert into refund_processing_orders
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="platformid != null">
+        platformId,
+      </if>
+      <if test="outpaymentid != null">
+        outPaymentId,
+      </if>
+      <if test="refundfee != null">
+        refundFee,
+      </if>
+      <if test="subpartner != null">
+        subpartner,
+      </if>
+      <if test="outTradeNo != null">
+        out_trade_no,
+      </if>
+      <if test="transactionId != null">
+        transaction_id,
+      </if>
+      <if test="queryCount != null">
+        query_count,
+      </if>
+      <if test="refundState != null">
+        refund_state,
+      </if>
+      <if test="outRefundNo != null">
+        out_refund_no,
+      </if>
+      <if test="notifyurl != null">
+        notifyUrl,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="platformid != null">
+        #{platformid,jdbcType=VARCHAR},
+      </if>
+      <if test="outpaymentid != null">
+        #{outpaymentid,jdbcType=VARCHAR},
+      </if>
+      <if test="refundfee != null">
+        #{refundfee,jdbcType=VARCHAR},
+      </if>
+      <if test="subpartner != null">
+        #{subpartner,jdbcType=VARCHAR},
+      </if>
+      <if test="outTradeNo != null">
+        #{outTradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="transactionId != null">
+        #{transactionId,jdbcType=VARCHAR},
+      </if>
+      <if test="queryCount != null">
+        #{queryCount,jdbcType=INTEGER},
+      </if>
+      <if test="refundState != null">
+        #{refundState,jdbcType=VARCHAR},
+      </if>
+      <if test="outRefundNo != null">
+        #{outRefundNo,jdbcType=VARCHAR},
+      </if>
+      <if test="notifyurl != null">
+        #{notifyurl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.littleboy.lbmalldao.dao.model.RefundProcessingOrdersExample" resultType="java.lang.Long">
+    select count(*) from refund_processing_orders
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+
+  <update id="updateByExampleSelective" parameterType="map">
+    update refund_processing_orders
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.platformid != null">
+        platformId = #{record.platformid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.outpaymentid != null">
+        outPaymentId = #{record.outpaymentid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.refundfee != null">
+        refundFee = #{record.refundfee,jdbcType=VARCHAR},
+      </if>
+      <if test="record.subpartner != null">
+        subpartner = #{record.subpartner,jdbcType=VARCHAR},
+      </if>
+      <if test="record.outTradeNo != null">
+        out_trade_no = #{record.outTradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.transactionId != null">
+        transaction_id = #{record.transactionId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.queryCount != null">
+        query_count = #{record.queryCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.refundState != null">
+        refund_state = #{record.refundState,jdbcType=VARCHAR},
+      </if>
+      <if test="record.outRefundNo != null">
+        out_refund_no = #{record.outRefundNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.notifyurl != null">
+        notifyUrl = #{record.notifyurl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.littleboy.lbmalldao.dao.model.RefundProcessingOrders">
+    update refund_processing_orders
+    <set>
+      <if test="platformid != null">
+        platformId = #{platformid,jdbcType=VARCHAR},
+      </if>
+      <if test="outpaymentid != null">
+        outPaymentId = #{outpaymentid,jdbcType=VARCHAR},
+      </if>
+      <if test="refundfee != null">
+        refundFee = #{refundfee,jdbcType=VARCHAR},
+      </if>
+      <if test="subpartner != null">
+        subpartner = #{subpartner,jdbcType=VARCHAR},
+      </if>
+      <if test="outTradeNo != null">
+        out_trade_no = #{outTradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="transactionId != null">
+        transaction_id = #{transactionId,jdbcType=VARCHAR},
+      </if>
+      <if test="queryCount != null">
+        query_count = #{queryCount,jdbcType=INTEGER},
+      </if>
+      <if test="refundState != null">
+        refund_state = #{refundState,jdbcType=VARCHAR},
+      </if>
+      <if test="outRefundNo != null">
+        out_refund_no = #{outRefundNo,jdbcType=VARCHAR},
+      </if>
+      <if test="notifyurl != null">
+        notifyUrl = #{notifyurl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+</mapper>

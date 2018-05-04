@@ -21,8 +21,8 @@ public class MybatisConfiguration {
 	@Value("${mybatis.configLocation}")
 	private String configlocation;
 	
-//	@Value("${mybatis.mapperLocations}")
-//	private String mapperLocations;
+	@Value("${mybatis.mapperLocations}")
+	private String mapperLocations;
 
 	@Bean(name="sqlSessionFactory")
 	public SqlSessionFactoryBean sqlSessionFactoryBean(DataSource dataSource) throws IOException {
@@ -31,7 +31,7 @@ public class MybatisConfiguration {
 		// 设置mybatis的主配置文件
 		ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
 		sqlSessionFactoryBean.setConfigLocation(resolver.getResource(configlocation));
-		//sqlSessionFactoryBean.setMapperLocations(resolver.getResources(mapperLocations));
+		sqlSessionFactoryBean.setMapperLocations(resolver.getResources(mapperLocations));
 
 		return sqlSessionFactoryBean;
 	}

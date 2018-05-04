@@ -24,7 +24,7 @@ public class Page<T> extends RowBounds implements Serializable {
 	/**
 	 * 页大小 : 每页的数量
 	 */
-	protected int pageSize = 15;
+	protected int pageSize = 3;
 
 	/**
 	 * 偏移量 : 第一条数据在表中的位置
