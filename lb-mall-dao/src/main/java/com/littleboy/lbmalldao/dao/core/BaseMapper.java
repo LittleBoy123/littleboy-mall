@@ -2,13 +2,15 @@ package com.littleboy.lbmalldao.dao.core;
 
 
 import com.littleboy.lbmalldao.dao.core.plugins.page.Page;
+import com.littleboy.lbmalldao.dao.model.TBContentCategory;
+import com.littleboy.lbmalldao.dao.model.TBContentCategoryExample;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 
 /**
  * 
- * @author lwp
+ * @author littleboy
  * 
  * @param <Model>
  * @param <PK>
@@ -56,6 +58,13 @@ public interface BaseMapper<Entity,PK, Example> {
 	int deleteByPrimaryKey(PK id);
 
 	/**
+	 *通过example删除
+	 * @param example
+	 *			查询封装器
+	 */
+	int deleteByExample(Example example);
+
+	/**
 	 * 通过主键, 查询对象
 	 * 
 	 * @param id
@@ -80,5 +89,31 @@ public interface BaseMapper<Entity,PK, Example> {
 	 * @return
 	 */
 	public List<Entity> selectByExample(Example example);
+
+
+
+	/**
+	 * 通过对象插入
+	 * @param record
+	 * 			数据对象
+	 * */
+	int insert(Entity record);
+
+	/**
+	 * 通过examples更新
+	 * @param record
+	 * 			数据对象
+	 * @param example
+	 * 			查询封装器
+	 * */
+	int updateByExample(@Param("record") TBContentCategory record, @Param("example") TBContentCategoryExample example);
+
+
+	/**
+	 * 通过key更新
+	 * @param record
+	 * 			数据对象
+	 * */
+	int updateByPrimaryKey(TBContentCategory record);
 
 }
